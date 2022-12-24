@@ -1,8 +1,7 @@
-import { useRef, useState } from "react";
+import { KeyboardEvent, useRef, useState } from "react";
 import { Button } from "./Button";
 import { v4 as uuidv4 } from "uuid";
 import { Item } from "../types/Item";
-import { TaskInput } from "./TaskInput";
 
 type Props = {
   onClick: (item: Item) => void;
@@ -26,9 +25,20 @@ export function AddTask({ onClick }: Props) {
     }
   }
 
+  function handleKeyUp(e: KeyboardEvent) {
+    if (e.code === "Enter") handleAddTask();
+  }
+
   return (
     <div className="flex items-center justify-end gap-4">
-      <TaskInput ref={inputRef} />
+      <input
+        type="text"
+        className="text-slate-800 px-3 py-2 rounded-lg w-1/2 ring hover:ring-sky-600 focus:ring-sky-300 focus:outline-none"
+        placeholder="Type a new task"
+        ref={inputRef}
+        onKeyUp={handleKeyUp}
+      />
+
       <Button intent="primary" onClick={handleAddTask} animate={invalidForm}>
         Add task
       </Button>
