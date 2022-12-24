@@ -30,7 +30,11 @@ export function Button({
   animate = false,
 }: Props) {
   return (
-    <button className={buttonStyles({ intent, animate })} onClick={onClick}>
+    <button
+      className={buttonStyles({ intent, animate })}
+      type={type}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
