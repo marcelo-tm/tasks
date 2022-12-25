@@ -1,17 +1,14 @@
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-
-import { Item } from "./types/Item";
+import { Task } from "./types/Task";
 import { Header } from "./components/Header";
-import { List } from "./pages/List";
+import { TaskList } from "./components/TasksList";
 import { AddTask } from "./components/AddTask";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 
 export default function App() {
-  const [tasks, setTasks] = useLocalStorage<Item[]>("TASKS", []);
+  const [tasks, setTasks] = useLocalStorage<Task[]>("TASKS", []);
 
-  function handleAddTask(item: Item) {
-    setTasks([...tasks, item]);
+  function handleAddTask(task: Task) {
+    setTasks([...tasks, task]);
   }
 
   return (
@@ -19,7 +16,7 @@ export default function App() {
       <div className="m-auto max-w-3xl p-3">
         <Header />
         <AddTask onClick={handleAddTask} />
-        <List tasks={tasks} onChange={setTasks} />
+        <TaskList tasks={tasks} onChange={setTasks} />
       </div>
     </div>
   );

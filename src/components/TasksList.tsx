@@ -1,9 +1,9 @@
-import { Task } from "../components/Task";
-import { Item } from "../types/Item";
-import { TasksList } from "../types/TasksList";
+import { TaskItem } from "./TaskItem";
+import { Task } from "../types/Task";
+import { List } from "../types/List";
 
-export function List({ tasks, onChange }: TasksList) {
-  function handleTaskCheck(item: Item) {
+export function TaskList({ tasks, onChange }: List) {
+  function handleTaskCheck(item: Task) {
     const taskIndex = tasks.findIndex((task) => task.id === item.id);
     if (taskIndex > -1) {
       const updatedTasks = [...tasks];
@@ -20,10 +20,10 @@ export function List({ tasks, onChange }: TasksList) {
   return (
     <div className="mt-5">
       {tasks.length > 0 ? (
-        tasks.map((item) => (
-          <Task
-            key={item.id}
-            item={item}
+        tasks.map((task) => (
+          <TaskItem
+            key={task.id}
+            task={task}
             onChange={handleTaskCheck}
             onDelete={handleTaskDelete}
           />
