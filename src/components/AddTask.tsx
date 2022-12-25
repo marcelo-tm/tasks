@@ -1,10 +1,11 @@
-import { KeyboardEvent, useRef, useState } from "react";
-import { Button } from "./Button";
 import { v4 as uuidv4 } from "uuid";
-import { Item } from "../types/Item";
+import { KeyboardEvent, useRef, useState } from "react";
+
+import { Button } from "./Button";
+import { Task } from "../types/Task";
 
 type Props = {
-  onClick: (item: Item) => void;
+  onClick: (task: Task) => void;
 };
 
 export function AddTask({ onClick }: Props) {
