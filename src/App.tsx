@@ -1,7 +1,7 @@
 import { Task } from "./types/Task";
 import { Header } from "./components/Header";
-import { TaskList } from "./components/TasksList";
-import { AddTask } from "./components/AddTask";
+import { TasksList } from "./components/TasksList";
+import { AddTask } from "./components/AddTask/AddTask";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 
 export default function App() {
@@ -16,7 +16,7 @@ export default function App() {
       <div className="m-auto max-w-3xl p-3">
         <Header />
         <AddTask onClick={handleAddTask} />
-        <TaskList tasks={tasks} onChange={setTasks} />
+        <TasksList tasks={tasks} onChange={setTasks} />
       </div>
     </div>
   );

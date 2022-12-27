@@ -1,8 +1,8 @@
 import React from "react";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
-import { Task } from "../types/Task";
-import { Button } from "./Button";
+import { Task } from "../../types/Task";
+import { Button } from "../Button";
 
 type Props = {
   task: Task;
@@ -20,7 +20,7 @@ export function TaskItem({ task, onChange, onDelete }: Props) {
   }
 
   return (
-    <div
+    <li
       className={`flex items-center justify-between p-3 rounded-xl mb-3 transition-all ${
         task.done ? "bg-slate-700" : "bg-slate-600"
       }`}
@@ -46,6 +46,6 @@ export function TaskItem({ task, onChange, onDelete }: Props) {
       <Button onClick={handleTaskDelete}>
         <TrashIcon className="w-6" />
       </Button>
-    </div>
+    </li>
   );
 }

@@ -1,25 +1,25 @@
 import { v4 as uuidv4 } from "uuid";
-import { KeyboardEvent, useRef, useState } from "react";
+import { KeyboardEvent, useState } from "react";
 
-import { Button } from "./Button";
-import { Task } from "../types/Task";
+import { Button } from "../Button";
+import { Task } from "../../types/Task";
 
 type Props = {
   onClick: (task: Task) => void;
 };
 
 export function AddTask({ onClick }: Props) {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [taskInput, setTaskInput] = useState("");
   const [invalidForm, setInvalidForm] = useState(false);
 
   function handleAddTask() {
-    if (inputRef.current?.value) {
+    if (taskInput) {
       onClick({
         id: uuidv4(),
-        name: inputRef.current.value,
+        name: taskInput,
         done: false,
       });
-      inputRef.current.value = "";
+      setTaskInput("");
     } else {
       setInvalidForm(true);
       setTimeout(() => setInvalidForm(false), 820);
@@ -34,13 +34,16 @@ export function AddTask({ onClick }: Props) {
     <div className="flex items-center justify-end gap-4">
       <input
         type="text"
-        className="text-slate-800 px-3 py-2 rounded-lg w-1/2 ring hover:ring-sky-600 focus:ring-sky-300 focus:outline-none"
+        className={`text-slate-800 px-3 py-2 rounded-lg w-1/2 ring hover:ring-sky-600 focus:ring-sky-300 focus:outline-none ${
+          invalidForm ? "animate-shake" : ""
+        }`}
         placeholder="Type a new task"
-        ref={inputRef}
         onKeyUp={handleKeyUp}
+        value={taskInput}
+        onChange={(e) => setTaskInput(e.target.value)}
       />
 
-      <Button intent="primary" onClick={handleAddTask} animate={invalidForm}>
+      <Button intent="primary" onClick={handleAddTask}>
         Add task
       </Button>
     </div>

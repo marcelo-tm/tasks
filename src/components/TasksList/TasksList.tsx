@@ -1,8 +1,8 @@
-import { TaskItem } from "./TaskItem";
-import { Task } from "../types/Task";
-import { List } from "../types/List";
+import { TaskItem } from "../TaskItem";
+import { Task } from "../../types/Task";
+import { List } from "../../types/List";
 
-export function TaskList({ tasks, onChange }: List) {
+export function TasksList({ tasks, onChange }: List) {
   function handleTaskCheck(item: Task) {
     const taskIndex = tasks.findIndex((task) => task.id === item.id);
     if (taskIndex > -1) {
@@ -18,7 +18,7 @@ export function TaskList({ tasks, onChange }: List) {
   }
 
   return (
-    <div className="mt-5">
+    <ul className="mt-5">
       {tasks.length > 0 ? (
         tasks.map((task) => (
           <TaskItem
@@ -34,6 +34,6 @@ export function TaskList({ tasks, onChange }: List) {
           <p className="text-md">Add a new task through the form above</p>
         </div>
       )}
-    </div>
+    </ul>
   );
 }
