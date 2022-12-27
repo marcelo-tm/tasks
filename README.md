@@ -24,7 +24,7 @@ git clone git@github.com:marcelo-tm/tasks.git
 ```
 - Access directory:
 ```
-cd undo_redo
+cd tasks
 ```
 - Install dependencies:
 ```
