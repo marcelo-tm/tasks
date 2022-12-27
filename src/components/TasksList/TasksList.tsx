@@ -30,7 +30,7 @@ export function TasksList({ tasks, onChange }: List) {
         ))
       ) : (
         <div className="flex flex-col items-center w-full pt-5 text-lg text-slate-600">
-          <p className="text-xl mb-2">No tasks? It it your day off?</p>
+          <p className="text-xl mb-2">No tasks? Is it your day off?</p>
           <p className="text-md">Add a new task through the form above</p>
         </div>
       )}
