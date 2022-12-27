@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { KeyboardEvent, useState } from "react";
+import { PlusIcon } from "@heroicons/react/24/outline";
 
 import { Button } from "../Button";
 import { Task } from "../../types/Task";
@@ -34,7 +35,7 @@ export function AddTask({ onClick }: Props) {
     <div className="flex items-center justify-end gap-4">
       <input
         type="text"
-        className={`text-slate-800 px-3 py-2 rounded-lg w-1/2 ring hover:ring-sky-600 focus:ring-sky-300 focus:outline-none ${
+        className={`text-slate-800 px-3 py-2 rounded-lg w-full md:w-1/2 ring hover:ring-sky-600 focus:ring-sky-300 focus:outline-none ${
           invalidForm ? "animate-shake" : ""
         }`}
         placeholder="Type a new task"
@@ -44,7 +45,10 @@ export function AddTask({ onClick }: Props) {
       />
 
       <Button intent="primary" onClick={handleAddTask}>
-        Add task
+        <span className="hidden md:block">Add task</span>
+        <span className="block w-6 h-6 md:hidden">
+          <PlusIcon />
+        </span>
       </Button>
     </div>
   );
