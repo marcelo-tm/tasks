@@ -13,6 +13,7 @@ Simple tasks manager that shows use of the React library, with Typescript suppor
 ## 3. Technologies
 - [ReactJS](https://reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
+- [TailwindCSS](https://tailwindcss.com/)
 - [CRA (class variance authority)](https://github.com/joe-bell/cva)
 - [Vitest](https://vitest.dev/)
 - [Vercel](https://www.vercel.org/)
